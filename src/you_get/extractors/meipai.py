@@ -13,11 +13,11 @@ def meipai_download(url, output_dir = '.', merge = True, info_only = False, **kw
     if (title == ''):
         title = match1(content, r'<meta content="(.*)" property="og:og:description">')
     vid_url = [match1(content, r'style="display: block;" src="(.*)"><\/video>')]
-    print_info(site_info, title, 'ts', float('inf'))
+    print_info(site_info, title, 'mp4', float('inf'))
     if not info_only:
         if player:
             launch_player(player, [m3u8_url])
-        download_urls(vid_url, title, 'ts', float('inf'), output_dir, merge = merge)
+        download_urls(vid_url, title, 'mp4', float('inf'), output_dir, merge = merge)
 
 site_info = "meipai.com"
 download = meipai_download
