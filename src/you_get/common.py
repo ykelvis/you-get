@@ -90,6 +90,7 @@ SITES = {
     'ximalaya'         : 'ximalaya',
     'yinyuetai'        : 'yinyuetai',
     'miaopai'          : 'yixia',
+    'meipai'           : 'meipai',
     'yizhibo'          : 'yizhibo',
     'youku'            : 'youku',
     'youtu'            : 'youtube',

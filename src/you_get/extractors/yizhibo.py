@@ -7,20 +7,13 @@ import json
 import time
 
 def yizhibo_download(url, output_dir = '.', merge = True, info_only = False, **kwargs):
-    video_id = url[url.rfind('/')+1:].split(".")[0]
-    json_request_url = 'http://www.yizhibo.com/live/h5api/get_basic_live_info?scid={}'.format(video_id)
-    content = get_content(json_request_url)
-    error = json.loads(content)['result']
-    if (error != 1):
-        raise ValueError("Error : {}".format(error))
-
-    data = json.loads(content)
-    title = data.get('data')['live_title']
+    content = get_content(url)
+    title = match1(content, r'<h1>.*：(.*)<\/h1>')
     if (title == ''):
-        title = data.get('data')['nickname']
-    m3u8_url = data.get('data')['play_url']
+        title = match1(content, r'nickname:\"(.*)\",')
+    m3u8_url = match1(content, r'play_url:"(.*)",')
     m3u8 = get_content(m3u8_url)
-    base_url = "/".join(data.get('data')['play_url'].split("/")[:7])+"/"
+    base_url = "/".join(m3u8_url.split("/")[:7])+"/"
     part_url = re.findall(r'([0-9]+\.ts)', m3u8)
     real_url = []
     for i in part_url:
