@@ -5,6 +5,7 @@ SITES = {
     '56'               : 'w56',
     'acfun'            : 'acfun',
     'archive'          : 'archive',
+    'avgle'            : 'avgle',
     'baidu'            : 'baidu',
     'bandcamp'         : 'bandcamp',
     'baomihua'         : 'baomihua',

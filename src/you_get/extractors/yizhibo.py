@@ -6,7 +6,7 @@ from ..common import *
 import json
 import time
 
-def yizhibo_download(url, output_dir = '.', merge = True, info_only = False, **kwargs):
+def yizhibo_download(url, output_dir='.', merge=True, info_only=False, **kwargs):
     content = get_content(url)
     title = match1(content, r'<h1>.*：(.*)<\/h1>')
     if (title == ''):
@@ -23,7 +23,7 @@ def yizhibo_download(url, output_dir = '.', merge = True, info_only = False, **k
     if not info_only:
         if player:
             launch_player(player, [m3u8_url])
-        download_urls(real_url, title, 'ts', float('inf'), output_dir, merge = merge)
+        download_urls(real_url, title, 'ts', float('inf'), output_dir, merge=merge)
 
 site_info = "yizhibo.com"
 download = yizhibo_download
